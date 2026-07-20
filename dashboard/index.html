@@ -8,12 +8,13 @@
     :root{--bg:#0e1116;--panel:#171c24;--muted:#9ca8b8;--text:#f3f6fa;--accent:#79d7b1;--line:#293241}
     *{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--text);font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif}
     main{max-width:1060px;margin:auto;padding:44px 20px 64px}.eyebrow{color:var(--accent);font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem}
-    h1{font-size:clamp(2rem,5vw,3.7rem);margin:.15em 0} .lead{color:var(--muted);margin:0 0 32px}
+    h1{font-size:clamp(2rem,5vw,3.7rem);margin:.15em 0}.lead{color:var(--muted);margin:0 0 32px}
     .grid{display:grid;gap:16px;grid-template-columns:repeat(4,1fr)}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px}
     .value{font-size:2rem;font-weight:750}.label{color:var(--muted);font-size:.9rem}.wide{grid-column:span 2}h2{font-size:1.05rem;margin:0 0 14px}
     .bars{height:180px;display:flex;gap:10px;align-items:end;border-bottom:1px solid var(--line);padding:0 2px}.bar-wrap{height:100%;flex:1;display:flex;align-items:center;justify-content:end;flex-direction:column;min-width:26px}
     .bar{width:100%;max-width:46px;border-radius:7px 7px 0 0;background:linear-gradient(180deg,#9eeacb,#48ad87);min-height:2px}.bar-label{font-size:.68rem;color:var(--muted);margin-top:7px;white-space:nowrap}
     table{width:100%;border-collapse:collapse}td{padding:10px 0;border-top:1px solid var(--line)}td:last-child{text-align:right;color:var(--muted)}
+    .quote-card{position:relative;margin:0 0 16px;padding:24px 54px 24px 24px}.quote-text{font-size:clamp(1.05rem,2.5vw,1.35rem);font-weight:650;white-space:pre-line;margin:0 0 12px}.quote-source{color:var(--muted);font-size:.88rem}.quote-refresh{position:absolute;top:14px;right:14px;width:30px;height:30px;border:1px solid var(--line);border-radius:9px;background:transparent;color:var(--muted);cursor:pointer;font-size:1rem;line-height:1}.quote-refresh:hover{color:var(--text);border-color:var(--accent)}
     .empty,.error{color:var(--muted)}@media(max-width:720px){.grid{grid-template-columns:repeat(2,1fr)}.wide{grid-column:span 2}}@media(max-width:420px){.grid{grid-template-columns:1fr}.wide{grid-column:span 1}}
   </style>
 </head>
@@ -22,11 +23,38 @@
     <div class="eyebrow">My Sport — My Forge</div>
     <h1>Тренировочный дашборд</h1>
     <p class="lead">Данные обновляются из <code>data/workouts.json</code>.</p>
+    <section class="card quote-card" id="quote-card">
+      <button class="quote-refresh" id="quote-refresh" type="button" title="Другая цитата" aria-label="Показать другую цитату">↻</button>
+      <p class="quote-text" id="quote-text">Загружаю цитату…</p>
+      <div class="quote-source" id="quote-source"></div>
+    </section>
     <section class="grid" id="dashboard"><p class="empty">Загружаю журнал…</p></section>
   </main>
   <script>
     const fmt = d => new Intl.DateTimeFormat('ru-RU',{day:'2-digit',month:'short',year:'numeric'}).format(new Date(d+'T00:00:00'));
     const weekKey = d => { const x=new Date(d+'T00:00:00'); x.setDate(x.getDate()+4-(x.getDay()||7)); const y=new Date(x.getFullYear(),0,1); return x.getFullYear()+'-W'+String(Math.ceil((((x-y)/86400000)+1)/7)).padStart(2,'0') };
+
+    let quotes=[];
+    let currentQuote=-1;
+    const showRandomQuote=()=>{
+      if(!quotes.length)return;
+      let next=Math.floor(Math.random()*quotes.length);
+      if(quotes.length>1&&next===currentQuote)next=(next+1)%quotes.length;
+      currentQuote=next;
+      document.querySelector('#quote-text').textContent=quotes[next].text;
+      document.querySelector('#quote-source').textContent=quotes[next].source;
+    };
+
+    fetch('../data/quotes.json').then(r=>{if(!r.ok)throw Error();return r.json()}).then(data=>{
+      quotes=data.quotes||[];
+      if(!quotes.length)throw Error();
+      showRandomQuote();
+      document.querySelector('#quote-refresh').addEventListener('click',showRandomQuote);
+    }).catch(()=>{
+      document.querySelector('#quote-text').textContent='Цитаты пока не добавлены.';
+      document.querySelector('#quote-refresh').hidden=true;
+    });
+
     fetch('../data/workouts.json').then(r=>{if(!r.ok)throw Error();return r.json()}).then(({workouts})=>{
       const root=document.querySelector('#dashboard'); if(!workouts.length){root.innerHTML='<p class="empty">Тренировок пока нет.</p>';return}
       const latest=[...workouts].sort((a,b)=>b.date.localeCompare(a.date))[0];
