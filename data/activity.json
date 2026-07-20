@@ -1,0 +1,20 @@
+{
+  "period": "2026-06",
+  "source": "Huawei Health monthly steps report",
+  "steps": {
+    "total": 332762,
+    "dailyAverage": 11092,
+    "distanceKm": 254.36,
+    "activeCaloriesKcal": 12413
+  },
+  "activityMixPercent": {
+    "walking": 95,
+    "running": 5,
+    "climbing": 0
+  },
+  "coachingNotes": [
+    "Высокий и устойчивый базовый уровень повседневной активности.",
+    "Учитывать шаги при оценке дефицита калорий и восстановлении ног.",
+    "Отдельно добавлять кардио для цели рекомпозиции сейчас не требуется."
+  ]
+}
