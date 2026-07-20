@@ -1,20 +1,33 @@
 {
-  "period": "2026-06",
-  "source": "Huawei Health monthly steps report",
+  "period": "2026-06/07",
+  "source": "Huawei Health reports and user activity logs",
   "steps": {
     "total": 332762,
     "dailyAverage": 11092,
     "distanceKm": 254.36,
     "activeCaloriesKcal": 12413
   },
-  "activityMixPercent": {
-    "walking": 95,
-    "running": 5,
-    "climbing": 0
-  },
+  "activities": [
+    {
+      "date": "2026-07-20",
+      "type": "football",
+      "durationMinutes": 61,
+      "caloriesKcal": 789,
+      "averageHeartRate": 159,
+      "maximumHeartRate": 195,
+      "zonesMinutes": {
+        "extreme": 12,
+        "anaerobic": 15,
+        "aerobic": 24,
+        "fatBurn": 8
+      },
+      "recoveryEstimateHours": 32
+    }
+  ],
   "coachingNotes": [
-    "Высокий и устойчивый базовый уровень повседневной активности.",
-    "Учитывать шаги при оценке дефицита калорий и восстановлении ног.",
-    "Отдельно добавлять кардио для цели рекомпозиции сейчас не требуется."
+    "Футбол переносится хорошо: пользователь сообщает, что через несколько часов восстанавливается полностью.",
+    "Не считать футбол автоматическим ограничителем тренировок ног; учитывать самочувствие и качество разминки.",
+    "Разделять кардионагрузку и локальную мышечную усталость от силовых тренировок.",
+    "Для цели рекомпозиции футбольная активность является полезным дополнительным расходом энергии."
   ]
 }
