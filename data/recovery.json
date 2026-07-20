@@ -1,0 +1,32 @@
+{
+  "baselinePeriod": "2026-06",
+  "source": "Huawei Health monthly sleep report",
+  "userReportedPattern": "Similar pattern month to month",
+  "sleep": {
+    "overallAverage": "7h 35m",
+    "nightAverage": "7h 32m",
+    "score": 79,
+    "deepAverage": "1h 41m",
+    "lightAverage": "4h 20m",
+    "remAverage": "1h 31m",
+    "deepSharePercent": 22,
+    "remSharePercent": 20,
+    "awakeningsAverage": 1
+  },
+  "schedule": {
+    "averageSleepOnset": "01:23",
+    "averageWakeTime": "09:05",
+    "sleepOnsetRegularityScore": 44,
+    "awakeningsRegularityScore": 29
+  },
+  "additionalMetrics": {
+    "respiratoryRecoveryScore": 98,
+    "bloodOxygenRangePercent": "95–99",
+    "sleepHeartRateRangeBpm": "42–98"
+  },
+  "notes": [
+    "Длительность сна и доли глубокого/быстрого сна в отчёте отмечены как нормальные.",
+    "Главная зона внимания: позднее и нерегулярное время засыпания.",
+    "Показатели носимого устройства — ориентир для динамики, а не медицинская диагностика."
+  ]
+}
