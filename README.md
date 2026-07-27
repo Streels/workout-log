@@ -11,6 +11,7 @@
 - [Восстановление](data/recovery.json) — сон и восстановление.
 - [Активность](data/activity.json) — шаги и повседневная нагрузка.
 - [Питание и добавки](data/nutrition.json) — текущий режим питания и БАДы.
+- [Цитатник](data/quotes.json) — коллекция цитат и мыслей.
 - [Тренировки](workouts/) — отдельные Markdown-записи каждой тренировки.
 - [Замеры тела](progress/body_measurements/) — контрольные точки формы и рекомпозиции.
 
@@ -123,7 +124,8 @@ ChatGPT:
 │   ├── workouts.json
 │   ├── recovery.json
 │   ├── activity.json
-│   └── nutrition.json
+│   ├── nutrition.json
+│   └── quotes.json
 ├── progress/
 │   └── body_measurements/
 │       └── *.md
