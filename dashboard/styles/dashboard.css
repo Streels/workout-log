@@ -150,10 +150,11 @@ td:last-child {
 
 .calendar {
   display: grid;
-  grid-template-columns: 64px repeat(7, 24px);
+  grid-template-columns: 76px repeat(7, 24px);
   align-items: center;
   justify-content: start;
-  gap: 7px;
+  column-gap: 7px;
+  row-gap: 7px;
 }
 
 .dow {
@@ -165,6 +166,7 @@ td:last-child {
 .week {
   color: var(--muted);
   font-size: 0.7rem;
+  line-height: 1;
   white-space: nowrap;
 }
 
@@ -375,12 +377,14 @@ td:last-child {
   }
 
   .calendar {
-    grid-template-columns: 52px repeat(7, 22px);
-    gap: 6px;
+    grid-template-columns: 74px repeat(7, minmax(18px, 22px));
+    column-gap: clamp(3px, 1.4vw, 6px);
+    row-gap: 6px;
   }
 
   .day {
-    width: 22px;
+    width: 100%;
+    max-width: 22px;
     height: 15px;
   }
 }
