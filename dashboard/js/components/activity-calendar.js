@@ -129,6 +129,12 @@ export class ActivityCalendar {
     let streak = 0;
     const week = new Date(currentWeek);
 
+    // The current week is still in progress, so missing its goal must not erase
+    // the streak already earned in previous completed weeks.
+    if ((activeWeekCounts[isoDate(week)] ?? 0) < ACTIVITY_GOAL_PER_WEEK) {
+      week.setDate(week.getDate() - 7);
+    }
+
     while ((activeWeekCounts[isoDate(week)] ?? 0) >= ACTIVITY_GOAL_PER_WEEK) {
       streak += 1;
       week.setDate(week.getDate() - 7);
