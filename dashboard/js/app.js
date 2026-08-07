@@ -2,7 +2,7 @@ import { ActivityCalendar } from "./components/activity-calendar.js";
 import { OverviewDashboard } from "./components/overview-dashboard.js";
 import { QuoteRotator } from "./components/quote-rotator.js";
 import { RecompositionChart } from "./components/recomposition-chart.js";
-import { DataService } from "./data-service.js";
+import { DataService } from "./data-service.js?v=20260807";
 
 function initTabs() {
   const tabs = document.querySelectorAll("[data-tab]");
