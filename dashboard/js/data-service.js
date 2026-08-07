@@ -35,7 +35,10 @@ export class DataService {
   }
 
   async #fetchJson(url) {
-    const response = await fetch(url);
+    const requestUrl = new URL(url);
+    requestUrl.searchParams.set("v", Date.now().toString());
+
+    const response = await fetch(requestUrl, { cache: "no-store" });
     if (!response.ok) {
       throw new Error(`${response.status} ${response.statusText}: ${url.pathname}`);
     }
