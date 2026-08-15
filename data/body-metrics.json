@@ -1,11 +1,25 @@
 {
-  "updatedAt": "2026-07-30",
+  "updatedAt": "2026-08-15",
   "measurements": [
     {
       "date": "2026-07-24",
       "weightKg": 75.0,
       "bodyFatPercent": 19.8,
       "waistCm": 79
+    },
+    {
+      "date": "2026-08-15",
+      "weightKg": 75.25,
+      "bodyFatPercent": 20.1,
+      "muscleMassKg": 57.02,
+      "waterPercent": 54.7,
+      "visceralFatLevel": 9,
+      "bmrKcal": 1643,
+      "boneMassKg": 3.06,
+      "proteinPercent": 21.0,
+      "bmi": 22.7,
+      "source": "Zepp Life smart scale",
+      "notes": "Измерение 15.08.2026 10:14. Показатели состава тела по биоимпедансу использовать прежде всего для отслеживания тренда при одинаковых условиях измерения."
     }
   ]
 }
