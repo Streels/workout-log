@@ -19,11 +19,11 @@ export class OverviewDashboard {
       this.#summaryCard(completed.length, "тренировок"),
       this.#summaryCard(lastWorkout?.date ?? "—", "последняя тренировка"),
       this.#summaryCard(
-        lastActivity ? `${lastActivity.durationMinutes} мин` : "—",
+        lastActivity?.durationMinutes != null ? `${lastActivity.durationMinutes} мин` : "—",
         "последняя активность",
       ),
       this.#summaryCard(
-        lastActivity?.averageHeartRate ? `❤️ ${lastActivity.averageHeartRate}` : "—",
+        lastActivity?.averageHeartRate != null ? `❤️ ${lastActivity.averageHeartRate}` : "—",
         "средний пульс активности",
       ),
       this.#workoutCard(lastWorkout),
@@ -70,21 +70,30 @@ export class OverviewDashboard {
       return '<article class="card wide"><h2>Активность</h2><p class="muted">Пока нет данных.</p></article>';
     }
 
+    const duration = activity.durationMinutes != null ? `${activity.durationMinutes} мин` : "—";
+    const calories = activity.caloriesKcal != null ? `${activity.caloriesKcal} ккал` : "—";
+    const heartRate =
+      activity.averageHeartRate != null || activity.maximumHeartRate != null
+        ? `${activity.averageHeartRate ?? "—"}/${activity.maximumHeartRate ?? "—"}`
+        : "—";
+    const recovery =
+      activity.recoveryEstimateHours != null ? `${activity.recoveryEstimateHours} ч` : "—";
+
     return `
       <article class="card wide">
         <h2>Активность</h2>
         <table>
           <tr>
-            <td>${escapeHtml(activity.type)}</td>
-            <td>${escapeHtml(activity.durationMinutes)} мин · ${escapeHtml(activity.caloriesKcal)} ккал</td>
+            <td>${escapeHtml(activity.title ?? activity.type)}</td>
+            <td>${escapeHtml(duration)} · ${escapeHtml(calories)}</td>
           </tr>
           <tr>
             <td>Пульс</td>
-            <td>${escapeHtml(activity.averageHeartRate)}/${escapeHtml(activity.maximumHeartRate)}</td>
+            <td>${escapeHtml(heartRate)}</td>
           </tr>
           <tr>
             <td>Восстановление</td>
-            <td>${escapeHtml(activity.recoveryEstimateHours)} ч</td>
+            <td>${escapeHtml(recovery)}</td>
           </tr>
         </table>
       </article>
