@@ -1,0 +1,21 @@
+{
+  "date": "2026-09-09",
+  "type": "functional_training",
+  "title": "Бокс + обучение флажку",
+  "duration": "00:44:30",
+  "durationMinutes": 44,
+  "caloriesKcal": 531,
+  "averageHeartRate": 149,
+  "maximumHeartRate": 187,
+  "zonesMinutes": {
+    "extreme": 6,
+    "anaerobic": 12,
+    "aerobic": 18,
+    "fatBurn": 5
+  },
+  "aerobicTrainingStress": 2.8,
+  "anaerobicTrainingStress": 2.0,
+  "recoveryEstimateHours": 26,
+  "equipment": "боксерская груша, перчатки, шведская стенка",
+  "notes": "Лёгкая уличная функциональная тренировка после дня ног. Бокс выполнен с удовольствием, хорошая кардионагрузка. Флажок: первая практика tuck flag. Пока нет контроля удержания, отрыв получается менее секунды. Зафиксировано как стартовая точка прогрессии навыка, а не неудача."
+}
