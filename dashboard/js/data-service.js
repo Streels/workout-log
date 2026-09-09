@@ -10,7 +10,7 @@ export class DataService {
       measurements: [DATA_URLS.measurements, "measurements"],
     };
 
-    const [entries, overlay] = await Promise.all([
+    const [entries, overlay, splitActivities] = await Promise.all([
       Promise.all(
         Object.entries(sources).map(async ([name, [url, key]]) => {
           try {
@@ -22,6 +22,7 @@ export class DataService {
         }),
       ),
       this.#loadOverlay(),
+      this.#loadSplitActivities(),
     ]);
 
     const result = entries.reduce(
@@ -31,6 +32,12 @@ export class DataService {
         return acc;
       },
       { data: {}, errors: {} },
+    );
+
+    result.data.activities = this.#mergeByKey(
+      result.data.activities,
+      splitActivities,
+      (item) => `${item.date}|${item.type ?? ""}|${item.title ?? ""}`,
     );
 
     result.data.workouts = this.#mergeByKey(
@@ -50,6 +57,20 @@ export class DataService {
   async loadQuotes() {
     const json = await this.#fetchJson(DATA_URLS.quotes);
     return Array.isArray(json.quotes) ? json.quotes : [];
+  }
+
+  async #loadSplitActivities() {
+    try {
+      const manifest = await this.#fetchJson(DATA_URLS.activityManifest);
+      const files = Array.isArray(manifest.activities) ? manifest.activities : [];
+      const items = await Promise.all(
+        files.map((file) => this.#fetchJson(new URL(`../../data/activities/${file}`, import.meta.url))),
+      );
+      return items.flatMap((item) => Array.isArray(item.activities) ? item.activities : [item]);
+    } catch (error) {
+      console.warn("Не удалось загрузить отдельные активности:", error);
+      return [];
+    }
   }
 
   async #loadOverlay() {
