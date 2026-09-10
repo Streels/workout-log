@@ -1,0 +1,23 @@
+{
+  "date": "2026-08-17",
+  "type": "football",
+  "title": "Футбол — полуфинал",
+  "role": "goalkeeper",
+  "result": "1:3",
+  "duration": "01:03:46",
+  "durationMinutes": 64,
+  "caloriesKcal": 812,
+  "averageHeartRate": 158,
+  "maximumHeartRate": 190,
+  "zonesMinutes": {
+    "extreme": 7,
+    "anaerobic": 27,
+    "aerobic": 15,
+    "fatBurn": 11,
+    "warmup": 1
+  },
+  "aerobicTrainingStress": 3.5,
+  "anaerobicTrainingStress": 2.2,
+  "recoveryEstimateHours": 29,
+  "notes": "Полуфинал, поражение 1:3. Играл вратарём. Несмотря на позицию, нагрузка получилась высокой: средний пульс 158, максимум 190, 34 минуты в анаэробной и экстремальной зонах. На следующий день не ставить тяжёлую тренировку ног без оценки восстановления."
+}
