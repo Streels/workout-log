@@ -1,0 +1,15 @@
+{
+  "date": "2026-07-20",
+  "type": "football",
+  "durationMinutes": 61,
+  "caloriesKcal": 789,
+  "averageHeartRate": 159,
+  "maximumHeartRate": 195,
+  "zonesMinutes": {
+    "extreme": 12,
+    "anaerobic": 15,
+    "aerobic": 24,
+    "fatBurn": 8
+  },
+  "recoveryEstimateHours": 32
+}
