@@ -1,4 +1,4 @@
-import { DATA_URLS } from "./config.js?v=20260826";
+import { DATA_URLS } from "./config.js?v=20260910";
 
 const OVERLAY_URL = new URL("../../data/dashboard-overlay.json", import.meta.url);
 
@@ -6,7 +6,6 @@ export class DataService {
   async loadDashboard() {
     const sources = {
       workouts: [DATA_URLS.workouts, "workouts"],
-      activities: [DATA_URLS.activities, "activities"],
       measurements: [DATA_URLS.measurements, "measurements"],
     };
 
@@ -31,13 +30,7 @@ export class DataService {
         if (error) acc.errors[name] = error;
         return acc;
       },
-      { data: {}, errors: {} },
-    );
-
-    result.data.activities = this.#mergeByKey(
-      result.data.activities,
-      splitActivities,
-      (item) => `${item.date}|${item.type ?? ""}|${item.title ?? ""}`,
+      { data: { activities: splitActivities }, errors: {} },
     );
 
     result.data.workouts = this.#mergeByKey(
