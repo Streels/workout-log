@@ -1,0 +1,20 @@
+{
+  "date": "2026-08-02",
+  "type": "lawn_mowing",
+  "title": "Покос травы",
+  "duration": "01:11:09",
+  "durationMinutes": 71,
+  "caloriesKcal": 670,
+  "averageHeartRate": 128,
+  "maximumHeartRate": 154,
+  "zonesMinutes": {
+    "extreme": 0,
+    "anaerobic": "<1",
+    "aerobic": 16,
+    "fatBurn": 49,
+    "warmup": 3
+  },
+  "aerobicTrainingStress": 2.4,
+  "recoveryEstimateHours": 8,
+  "notes": "Умеренная функциональная нагрузка после тренировки ног 31.07; учитывать как активное восстановление, но не как полный отдых."
+}
